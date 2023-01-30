@@ -1,39 +1,15 @@
-# PHP Scaffolding
+# Share State
 
-[![MIT Software License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+## Goal
 
-This is a scaffolding for PHP projects. A basic structure ready to start coding in `src` and `tests`.
+Sharing state between different processes in PHP.
 
-### Some composer scripts
+## Motivation
 
-```bash
-composer test-all     # run test-quality & test-phpunit
-composer test-quality # run csrun & psalm & phpstan
-composer test-phpunit # run phpunit
+This experiment is motivated by the idea of **sharing states between different processes** that need to be aware of some data in common. At first sight, you might think a regular DB would be suitable for this, like MySQL, PostgreSQL, or even Mongo or Redis... but the idea here is to avoid the complexity of an external DB system and keep it simple. Keep it in a file.
 
-composer csrun   # check code style
-composer psalm   # run psalm coverage
-composer phpstan # run phpstan coverage
-```
+Because they are different processes, there is no simple way to share the state between the processes themselves (that doesn't involve storing the data somewhere else), so we have to rely on PHP extensions or save the data on the persistent disk.
 
-### Git hooks
+The main idea behind this library is to create a temporal file that will save the state you want to share between the different processes on runtime. And once all the processes consumed that data, it would be safe to remove that file.
 
-Install the pre-commit hook running:
-
-```bash
-./tools/git-hooks/init.sh
-```
-
-### Basic Dockerfile
-
-If you don't have PHP in your local machine, you can use docker to build an image with `PHP 8.0`.
-
-```bash
-docker build -t php-scaffolding .
-```
-
-### Contributions
-
-Feel free to open any PR with your ideas, suggestions or improvements.
-
-Or contact me directly via [Twitter](https://twitter.com/Chemaclass).
+That means that the goal is to be able to share a temporal state between processes.

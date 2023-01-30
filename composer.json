@@ -1,11 +1,12 @@
 {
-    "description": "A basic PHP scaffolding",
-    "name": "chemaclass/php-scaffolding",
-    "type": "project",
+    "description": "A library to share state between different processes.",
+    "name": "chemaclass/shared-state",
+    "type": "library",
     "license": "MIT",
     "keywords": [
         "php",
-        "scaffolding"
+        "share",
+        "state"
     ],
     "require": {
         "php": ">=8.0"
@@ -19,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "SharedState\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "SharedStateTests\\": "tests/"
         }
     },
     "scripts": {

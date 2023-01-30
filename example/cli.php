@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-use App\Domain\Math;
+use src\Math;
 
 require \dirname(__DIR__) . '/vendor/autoload.php';
 

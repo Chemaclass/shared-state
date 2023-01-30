@@ -9,7 +9,7 @@ use SharedState\SharedState;
 echo 'Starting child (id-bool)...';
 
 try {
-    $state = SharedState::forId('id-bool', new DateTimeImmutable());
+    $state = SharedState::forId('id-bool');
     if ($state->get() === null) {
         $state->set((bool)random_int(0, 1));
     }

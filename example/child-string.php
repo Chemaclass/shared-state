@@ -8,7 +8,7 @@ use SharedState\SharedState;
 
 echo 'Starting child (id-string)...';
 
-$state = SharedState::forId('id-string', new DateTimeImmutable());
+$state = SharedState::forId('id-string');
 if ($state->get() === null) {
     $state->set('something random: ' . mt_rand());
 }

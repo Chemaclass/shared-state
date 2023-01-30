@@ -80,7 +80,7 @@ final class SharedState
         }
 
         $fileName = self::$config[$id]['file-name']
-            ?? self::DEFAULT_SHARED_STATE_FILE_NAME;
+            ?? $id . '-' . self::DEFAULT_SHARED_STATE_FILE_NAME;
 
         return self::getAppRoot() . '/' . $fileName;
     }

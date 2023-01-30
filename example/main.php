@@ -20,3 +20,15 @@ dump($output);
 SharedState::clear('id-bool');
 SharedState::clear('id-string');
 SharedState::clear('id-default');
+
+##########
+# OUTPUT #
+##########
+//array:6 [
+//  0 => "Starting child (id-bool)...true"
+//  1 => "Starting child (id-string)...Finished. Value: something random: 1532820209"
+//  2 => "Starting child (id-default)...Finished. Value: random: 429732778"
+//  3 => "Starting child (id-bool)...true"
+//  4 => "Starting child (id-string)...Finished. Value: something random: 1532820209"
+//  5 => "Starting child (id-default)...Finished. Value: random: 429732778"
+//]

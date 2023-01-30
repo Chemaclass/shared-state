@@ -5,3 +5,5 @@
 /data/
 /.phpbench/
 *.cache
+
+shared*state.json

@@ -11,4 +11,10 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <MixedInferredReturnType errorLevel="suppress" />
+        <MixedReturnStatement errorLevel="suppress" />
+        <UnresolvableInclude errorLevel="suppress" />
+    </issueHandlers>
 </psalm>

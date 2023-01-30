@@ -9,12 +9,12 @@
          testdox="true"
 >
     <php>
-        <ini name="error_reporting" value="-1" />
+        <ini name="error_reporting" value="-1"/>
     </php>
 
     <testsuites>
-        <testsuite name="unit">
-            <directory suffix="Test.php">tests/Unit</directory>
+        <testsuite name="integration">
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
 

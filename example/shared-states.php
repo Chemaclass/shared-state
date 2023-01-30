@@ -10,4 +10,5 @@ return [
     'id-string' => [
         'file-name' => 'shared-string-state.json',
     ],
+    'id-default' => [],
 ];

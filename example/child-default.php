@@ -6,11 +6,11 @@ require \dirname(__DIR__) . '/vendor/autoload.php';
 
 use SharedState\SharedState;
 
-echo 'Starting child (id-string)...';
+echo 'Starting child (id-default)...';
 
-$state = SharedState::forId('id-string', new DateTimeImmutable());
+$state = SharedState::forId('id-default', new DateTimeImmutable());
 if ($state->get() === null) {
-    $state->set('something random: ' . mt_rand());
+    $state->set('random: ' . mt_rand());
 }
 
 echo 'Finished. Value: ' . $state->get();

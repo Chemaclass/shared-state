@@ -17,12 +17,13 @@ final class SharedStateTest extends TestCase
             ],
             'id-string' => [
                 'file-name' => 'shared-string-state.json',
-                'minutes-diff-limit' => 1,
             ],
+            'id-default' => [],
         ]);
 
         SharedState::clear('id-bool');
         SharedState::clear('id-string');
+        SharedState::clear('id-default');
     }
 
     public function test_get_is_null_when_nothing_has_been_set(): void
@@ -79,5 +80,15 @@ final class SharedStateTest extends TestCase
         $state2 = SharedState::forId('id-bool', new DateTimeImmutable('2023-01-01 10:00:00'));
 
         self::assertSame('any value', $state2->get());
+    }
+
+    public function test_default_file_name(): void
+    {
+        $state1 = SharedState::forId('id-default', new DateTimeImmutable('2023-01-01 10:00:00'));
+        $state1->set('anything');
+
+        $state2 = SharedState::forId('id-default', new DateTimeImmutable('2023-01-01 10:00:00'));
+
+        self::assertSame('anything', $state2->get());
     }
 }

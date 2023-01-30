@@ -6,14 +6,14 @@ require \dirname(__DIR__) . '/vendor/autoload.php';
 
 use SharedState\SharedState;
 
-echo 'Starting child...';
+echo 'Starting child (id-bool)...';
 
 try {
-    $state1 = SharedState::forId('id-bool', new DateTimeImmutable());
-    if ($state1->get() === null) {
-        $state1->set((bool)random_int(0, 1));
+    $state = SharedState::forId('id-bool', new DateTimeImmutable());
+    if ($state->get() === null) {
+        $state->set((bool)random_int(0, 1));
     }
 } catch (Exception $e) {
 }
 
-echo 'Finished. Value: ' . $state1->get() ? 'true' : 'false';
+echo 'Finished. Value: ' . $state->get() ? 'true' : 'false';

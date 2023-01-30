@@ -13,3 +13,12 @@ Because they are different processes, there is no simple way to share the state 
 The main idea behind this library is to create a temporal file that will save the state you want to share between the different processes on runtime. And once all the processes consumed that data, it would be safe to remove that file.
 
 That means that the goal is to be able to share a temporal state between processes.
+
+
+### Example
+
+You can check the example in `example/main.php`:
+```bash
+cd example
+php main.php
+```

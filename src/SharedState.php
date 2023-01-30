@@ -15,13 +15,15 @@ use DateTimeImmutable;
  */
 final class SharedState
 {
-    private const SHARED_STATES_CONFIG_FILENAME = 'shared-states.php';
+    private const CONFIG_FILENAME = 'shared-states.php';
+
+    private const DEFAULT_SHARED_STATE_FILE_NAME = 'shared-state.json';
     private const DEFAULT_MINUTES_DIFF_LIMIT = 10;
 
     /**
      * @var array<string, array{
-     *     file-name: string,
-     *     minutes-diff-limit: int,
+     *     file-name?: string,
+     *     minutes-diff-limit?: int,
      * }>
      */
     private static array $config = [];
@@ -37,8 +39,8 @@ final class SharedState
 
     /**
      * @param array<string, array{
-     *     file-name: string,
-     *     minutes-diff-limit: int,
+     *     file-name?: string,
+     *     minutes-diff-limit?: int,
      * }> $config
      */
     public static function setConfig(array $config): void
@@ -73,7 +75,10 @@ final class SharedState
             self::$config = self::loadSharedStatesConfig();
         }
 
-        return self::getAppRoot() . '/' . self::$config[$id]['file-name'];
+        $fileName = self::$config[$id]['file-name']
+            ?? self::DEFAULT_SHARED_STATE_FILE_NAME;
+
+        return self::getAppRoot() . '/' . $fileName;
     }
 
     public static function getMinutesDiffLimit(string $id): int
@@ -112,13 +117,13 @@ final class SharedState
 
     /**
      * @return array<string, array{
-     *     file-name: string,
-     *     minutes-diff-limit: int,
+     *     file-name?: string,
+     *     minutes-diff-limit?: int,
      * }>
      */
     private static function loadSharedStatesConfig(): array
     {
-        return require self::getAppRoot() . '/' . self::SHARED_STATES_CONFIG_FILENAME;
+        return require self::getAppRoot() . '/' . self::CONFIG_FILENAME;
     }
 
     private static function getAppRoot(): string
@@ -126,6 +131,7 @@ final class SharedState
         if (self::$appRoot === '') {
             self::$appRoot = (string)getcwd();
         }
+
         return self::$appRoot;
     }
 

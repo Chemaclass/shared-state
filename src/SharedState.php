@@ -48,8 +48,12 @@ final class SharedState
         self::$config = $config;
     }
 
-    public static function forId(string $id, DateTimeImmutable $now): self
+    public static function forId(string $id, ?DateTimeImmutable $now = null): self
     {
+        if ($now === null) {
+            $now = new DateTimeImmutable();
+        }
+
         if (self::$config === []) {
             self::$config = self::loadSharedStatesConfig();
         }

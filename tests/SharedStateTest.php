@@ -91,4 +91,14 @@ final class SharedStateTest extends TestCase
 
         self::assertSame('anything', $state2->get());
     }
+
+    public function test_nullable_datetime_then_use_current_now(): void
+    {
+        $state1 = SharedState::forId('id-default');
+        $state1->set('anything');
+
+        $state2 = SharedState::forId('id-default');
+
+        self::assertSame('anything', $state2->get());
+    }
 }
